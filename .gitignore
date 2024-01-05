@@ -1,0 +1,5 @@
+# .gitignore of svgfiles2js
+node_modules/
+output/
+dist/
+build/
