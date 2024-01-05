@@ -2,7 +2,7 @@
 	"name": "svgfiles2js",
 	"version": "0.1.1",
 	"description": "An nodejs-cli-app fro converting svg-files into one js-file",
-	"private": true,
+	"private": false,
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/charlyoleg2/svgfiles2js.git"
