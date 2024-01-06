@@ -45,7 +45,21 @@ function convert_svg(isvg: string[], ofile: string) {
 		} else {
 			varNames.push(varName);
 			const fsvg = fs.readFileSync(svgFilePath, 'utf8');
-			oStr += `export const ${varName} = '${fsvg}';\n\n`;
+			//oStr += `export const ${varName} = '${fsvg}';\n\n`;
+			oStr += `export const ${varName} = \n\t'`;
+			for (let i = 0; i < fsvg.length; i++) {
+				const letter = fsvg.charAt(i);
+				if (i % 80 === 0 && i > 0) {
+					oStr += "' +\n\t'";
+				}
+				if (letter === "'") {
+					console.log(`err553: single-quote in ${svgFilePath}`);
+					process.exit(1);
+				} else {
+					oStr += letter;
+				}
+			}
+			oStr += "';\n\n";
 		}
 	}
 	//console.log(varNames);
