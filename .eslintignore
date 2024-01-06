@@ -17,3 +17,4 @@ vitest.config.ts
 dist/
 output/
 tmp/
+test/html/
