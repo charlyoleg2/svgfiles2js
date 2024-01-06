@@ -40,7 +40,7 @@
 		"svgo2": "svgo --config ./svgo.config.cjs -f test/svg/sub -o test/svgo/sub",
 		"svgo": "run-s svgo1 svgo2",
 		"run": "dist/svgfiles2js.js -s test/svgo/*.svg -o test/html/tmp/svg-bundle.js",
-		"clean": "shx rm -fr build dist output"
+		"clean": "shx rm -fr build dist output test/html/tmp"
 	},
 	"dependencies": {
 		"glob": "^10.3.10",
