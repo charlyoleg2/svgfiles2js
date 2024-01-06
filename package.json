@@ -68,5 +68,11 @@
 	"bin": {
 		"svgfiles2js": "dist/svgfiles2js.js"
 	},
+	"files": [
+		"dist/",
+		"!dist/**/*.map",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
 	"type": "module"
 }
