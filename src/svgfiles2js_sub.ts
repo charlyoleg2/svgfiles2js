@@ -46,7 +46,8 @@ function convert_svg(isvg: string[], ofile: string) {
 			varNames.push(varName);
 			const fsvg = fs.readFileSync(svgFilePath, 'utf8');
 			//oStr += `export const ${varName} = '${fsvg}';\n\n`;
-			oStr += `export const ${varName} = \n\t'`;
+			oStr += `export const ${varName} =\n\t'`;
+			let return_char_count = 0;
 			for (let i = 0; i < fsvg.length; i++) {
 				const letter = fsvg.charAt(i);
 				if (i % 80 === 0 && i > 0) {
@@ -59,11 +60,13 @@ function convert_svg(isvg: string[], ofile: string) {
 					//console.log(`err559: return character in ${svgFilePath} at position ${i}`);
 					//process.exit(1);
 					oStr += ' ';
+					return_char_count += 1;
 				} else {
 					oStr += letter;
 				}
 			}
 			oStr += "';\n\n";
+			console.log(`warn309: ${svgFilePath} with ${return_char_count} return-characters!`);
 		}
 	}
 	//console.log(varNames);
