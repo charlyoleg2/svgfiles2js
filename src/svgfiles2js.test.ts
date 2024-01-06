@@ -1,8 +1,11 @@
 import { describe, it, expect } from 'vitest';
-//import { app-cli } from './svgfiles2js';
+import { createVarName } from './svgfiles2js';
 
 describe('svgfiles2js suit', () => {
-	it('app-cli execution', () => {
-		expect(2 + 2).toBe(4);
+	it('createVarName 1', () => {
+		expect(createVarName('trapeze_side.svg')).toBe('trapeze_side_svg');
+	});
+	it('createVarName 2', () => {
+		expect(createVarName('trapeze-side.svg')).toBe('trapeze_side_svg');
 	});
 });

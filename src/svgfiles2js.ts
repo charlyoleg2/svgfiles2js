@@ -5,12 +5,33 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { version } from '../package.json';
 import { globSync } from 'glob';
+import * as path from 'path';
+import { pathToFileURL } from 'url';
+
+function createVarName(iPath: string): string {
+	const varName1 = path.basename(iPath);
+	const rePoint = /\./;
+	const varName2 = varName1.replace(rePoint, '_');
+	const reHyphen = /-/;
+	const varName3 = varName2.replace(reHyphen, '_');
+	return varName3;
+}
 
 function convert_svg(isvg: string[], ofile: string) {
+	const varNames: string[] = [];
+	//let oStr = '';
 	console.log('List of svg-files bundled:');
 	for (const [idx, svgFileName] of isvg.entries()) {
 		console.log(`${idx + 1}: ${svgFileName}`);
+		const varName = createVarName(svgFileName);
+		if (varNames.includes(varName)) {
+			console.log(`err543: varName ${varName} is already used!`);
+			process.exit(1);
+		} else {
+			varNames.push(varName);
+		}
 	}
+	//console.log(varNames);
 	console.log(`Write output-file: ${ofile}`);
 }
 
@@ -59,6 +80,12 @@ function svgfiles2js_cli(iArgs: string[]) {
 	convert_svg(svgfiles, argv.output[0]);
 }
 
-console.log('svgfiles2js says hello!');
-svgfiles2js_cli(process.argv);
-console.log('svgfiles2js says bye!');
+// check if the module is the entryPoint or imported
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+	console.log('svgfiles2js says hello!');
+	svgfiles2js_cli(process.argv);
+	console.log('svgfiles2js says bye!');
+}
+
+// for vitest only
+export { createVarName };
