@@ -41,6 +41,7 @@
 		"svgo": "run-s svgo1 svgo2",
 		"run": "dist/svgfiles2js.js -s test/svgo/*.svg -o test/html/tmp/svg-bundle.js",
 		"serve_html": "serve test/html",
+		"gh-publish": "npm publish --provenance",
 		"clean": "shx rm -fr build dist output test/html/tmp"
 	},
 	"dependencies": {
