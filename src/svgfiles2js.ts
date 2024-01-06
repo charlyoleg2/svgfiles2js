@@ -41,7 +41,7 @@ function svgfiles2js_cli(iArgs: string[]) {
 		.help()
 		.strict()
 		.parseSync();
-	console.log(argv.svg);
+	//console.log(argv.svg);
 	//console.log(argv.output);
 	if (argv.svg.length < 1) {
 		console.log('err036: No svg-files to be converted!');

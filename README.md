@@ -29,7 +29,7 @@ npx svgfiles2js -s test/svg/*.svg -o dist/svg-bundle.ts
 npx svgfiles2js -s 'test/**/*.svg' -o dist/svg-bundle.js
 ```
 
-If you use the double-star character '\*\*', you must quote the path to prevent the shell to expand the path before being interpreted by *svgfiles2js*.
+If you use the double-star character '\*\*', you must quote (with single-quote or double-quote) the path to prevent the shell expanding the path before being interpreted by *svgfiles2js*.
 
 Alternatives
 ------------
