@@ -65,6 +65,8 @@
 		"typescript": "^5.3.3",
 		"vitest": "^1.1.2"
 	},
-	"bin": "./dist/svgfiles2js.js",
+	"bin": {
+		"svgfiles2js": "dist/svgfiles2js.js"
+	},
 	"type": "module"
 }
