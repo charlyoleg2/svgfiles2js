@@ -1,6 +1,6 @@
 {
 	"name": "svgfiles2js",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "An nodejs-cli-app fro converting svg-files into one js-file",
 	"private": false,
 	"repository": {
