@@ -34,7 +34,7 @@ function convert_svg(isvg: string[], ofile: string) {
 	const varNames: string[] = [];
 	let oStr = `// ${path.basename(ofile)}\n`;
 	//oStr += `// created by svgfiles2js on ${dateString()}\n\n`;
-	oStr += `// created by svgfiles2js\n\n`;
+	oStr += `// created by svgfiles2js\n`;
 	console.log('List of svg-files bundled:');
 	for (const [idx, svgFilePath] of isvg.entries()) {
 		console.log(`${idx + 1}: ${svgFilePath}`);
@@ -46,6 +46,7 @@ function convert_svg(isvg: string[], ofile: string) {
 			varNames.push(varName);
 			const fsvg = fs.readFileSync(svgFilePath, 'utf8');
 			//oStr += `export const ${varName} = '${fsvg}';\n\n`;
+			oStr += '\n';
 			oStr += `export const ${varName} =\n\t'`;
 			let return_char_count = 0;
 			for (let i = 0; i < fsvg.length; i++) {
@@ -65,7 +66,7 @@ function convert_svg(isvg: string[], ofile: string) {
 					oStr += letter;
 				}
 			}
-			oStr += "';\n\n";
+			oStr += "';\n";
 			if (return_char_count > 0) {
 				console.log(`warn309: ${svgFilePath} with ${return_char_count} return-characters!`);
 			}
