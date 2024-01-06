@@ -36,6 +36,9 @@
 		"test:unit:once": "vitest --run",
 		"test:bats": "bats test/test1.bats",
 		"ci": "run-s check build pretty lint test:unit:once test:bats",
+		"svgo1": "svgo --config ./svgo.config.cjs -f test/svg -o test/svgo",
+		"svgo2": "svgo --config ./svgo.config.cjs -f test/svg/sub -o test/svgo/sub",
+		"svgo": "run-s svgo1 svgo2",
 		"run": "dist/svgfiles2js.js",
 		"clean": "shx rm -fr build dist output"
 	},
@@ -53,6 +56,7 @@
 		"npm-run-all": "^4.1.5",
 		"prettier": "^3.1.1",
 		"shx": "^0.3.4",
+		"svgo": "^3.2.0",
 		"tsup": "^8.0.1",
 		"typescript": "^5.3.3",
 		"vitest": "^1.1.2"
