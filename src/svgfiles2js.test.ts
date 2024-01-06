@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createVarName } from './svgfiles2js';
+import { createVarName } from './svgfiles2js_sub';
 
 describe('svgfiles2js suit', () => {
 	it('createVarName 1', () => {
