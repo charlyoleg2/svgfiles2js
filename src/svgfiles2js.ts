@@ -32,7 +32,7 @@ function svgfiles2js_cli(iArgs: string[]) {
 		.option('output', {
 			alias: 'o',
 			type: 'string',
-			array: false,
+			array: true,
 			description: 'path to the output file',
 			default: 'dist/svg-bundle.ts'
 		})
@@ -45,7 +45,11 @@ function svgfiles2js_cli(iArgs: string[]) {
 		console.log('err036: No svg-files to be converted!');
 		process.exit(1);
 	}
-	convert_svg(argv.svg, argv.output);
+	if (argv.output.length > 1) {
+		console.log(`err049: ${argv.output.length} output file-path are provided!`);
+		process.exit(1);
+	}
+	convert_svg(argv.svg, argv.output[0]);
 }
 
 console.log('svgfiles2js says hello!');
