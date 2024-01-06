@@ -5,6 +5,13 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { version } from '../package.json';
 
+function convert_svg(isvg: string[], ofile: string) {
+	for (const [idx, svgFileName] of isvg.entries()) {
+		console.log(`${idx}: ${svgFileName}`);
+	}
+	console.log(`ofile: ${ofile}`);
+}
+
 function svgfiles2js_cli(iArgs: string[]) {
 	const argv = yargs(hideBin(iArgs))
 		.scriptName('svgfiles2js')
@@ -32,8 +39,13 @@ function svgfiles2js_cli(iArgs: string[]) {
 		.help()
 		.strict()
 		.parseSync();
-	console.log(argv.svg);
-	console.log(argv.output);
+	//console.log(argv.svg);
+	//console.log(argv.output);
+	if (argv.svg.length < 1) {
+		console.log('err036: No svg-files to be converted!');
+		process.exit(1);
+	}
+	convert_svg(argv.svg, argv.output);
 }
 
 console.log('svgfiles2js says hello!');
