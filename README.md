@@ -24,6 +24,8 @@ Below a list of *svg-inliner* tools:
 - https://github.com/academeet/vite-svg-vue
 - https://github.com/shrpne/vue-inline-svg
 
+Most of those *svg-inliner* include the *svg-optimizer* [svgo](https://svgo.dev/). *svgfiles2js* doesn't include *svgo*. If you want to optimized your svg-files, you must install and run *svgo* and then call *svgfiles2js*. The advantage is that you can check easily the optimized svg-files before the conversion in *javascript*.
+
 
 Getting started
 ---------------
