@@ -7,6 +7,29 @@ Presentation
 
 *svgfiles2js* is a *command line interface* application for converting [SVG](https://www.w3.org/Graphics/SVG/) files in one *javascript* or *typescript* file. Some people call this kind of CLI a *svg-inliner*.
 
+Installation
+------------
+
+```bash
+npm i -D svgfiles2js
+```
+
+or in a repository with workspaces
+
+```bash
+npm -w mySubPackage i -D svgfiles2js
+```
+
+Usage
+-----
+
+```bash
+npx svgfiles2js -s test/svg/trapeze_rod.svg test/svg/trapeze_side.svg
+npx svgfiles2js -s test/svg/*.svg -o dist/svg-bundle.ts
+npx svgfiles2js -s 'test/**/*.svg' -o dist/svg-bundle.js
+```
+
+If you use the double-star character '\*\*', you must quote the path to prevent the shell to expand the path before being interpreted by *svgfiles2js*.
 
 Alternatives
 ------------
@@ -27,8 +50,8 @@ Below a list of *svg-inliner* tools:
 Most of those *svg-inliner* include the *svg-optimizer* [svgo](https://svgo.dev/). *svgfiles2js* doesn't include *svgo*. If you want to optimized your svg-files, you must install and run *svgo* and then call *svgfiles2js*. The advantage is that you can check easily the optimized svg-files before the conversion in *javascript*.
 
 
-Getting started
----------------
+Getting started with development
+--------------------------------
 
 ```bash
 git clone https://github.com/charlyoleg2/svgfiles2js
