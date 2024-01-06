@@ -53,8 +53,12 @@ function convert_svg(isvg: string[], ofile: string) {
 					oStr += "' +\n\t'";
 				}
 				if (letter === "'") {
-					console.log(`err553: single-quote in ${svgFilePath}`);
+					console.log(`err553: single-quote in ${svgFilePath} at position ${i}`);
 					process.exit(1);
+				} else if (letter === '\n') {
+					//console.log(`err559: return character in ${svgFilePath} at position ${i}`);
+					//process.exit(1);
+					oStr += ' ';
 				} else {
 					oStr += letter;
 				}
