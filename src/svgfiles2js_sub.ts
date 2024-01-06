@@ -66,7 +66,9 @@ function convert_svg(isvg: string[], ofile: string) {
 				}
 			}
 			oStr += "';\n\n";
-			console.log(`warn309: ${svgFilePath} with ${return_char_count} return-characters!`);
+			if (return_char_count > 0) {
+				console.log(`warn309: ${svgFilePath} with ${return_char_count} return-characters!`);
+			}
 		}
 	}
 	//console.log(varNames);
