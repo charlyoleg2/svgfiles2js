@@ -16,3 +16,4 @@ yarn.lock
 vitest.config.ts
 dist/
 output/
+tmp/

@@ -28,6 +28,6 @@ setup() {
 }
 
 @test "simple usage" {
-    run svgfiles2js.js -s 'test/svg/*.svg'
+    run svgfiles2js.js -s 'test/svgo/*.svg' -o test/html/tmp/svg-bundle.js
 	[ "$status" -eq 0 ]
 }

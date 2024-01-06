@@ -5,8 +5,23 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { version } from '../package.json';
 import { globSync } from 'glob';
-import * as path from 'path';
+import path from 'path';
+import fs from 'fs';
 import { pathToFileURL } from 'url';
+
+function dateString(): string {
+	const re1 = /[-:]/g;
+	const re2 = /\..*$/;
+	const rDateStr = new Date().toISOString().replace(re1, '').replace(re2, '').replace('T', '_');
+	return rDateStr;
+}
+
+function createDir(iDir: string) {
+	if (!fs.existsSync(iDir)) {
+		fs.mkdirSync(iDir, { recursive: true });
+		console.log(`info203: mkdir ${iDir}`);
+	}
+}
 
 function createVarName(iPath: string): string {
 	const varName1 = path.basename(iPath);
@@ -19,20 +34,31 @@ function createVarName(iPath: string): string {
 
 function convert_svg(isvg: string[], ofile: string) {
 	const varNames: string[] = [];
-	//let oStr = '';
+	let oStr = `// ${path.basename(ofile)}\n`;
+	oStr += `// created by svgfiles2js on ${dateString()}\n\n`;
 	console.log('List of svg-files bundled:');
-	for (const [idx, svgFileName] of isvg.entries()) {
-		console.log(`${idx + 1}: ${svgFileName}`);
-		const varName = createVarName(svgFileName);
+	for (const [idx, svgFilePath] of isvg.entries()) {
+		console.log(`${idx + 1}: ${svgFilePath}`);
+		const varName = createVarName(svgFilePath);
 		if (varNames.includes(varName)) {
 			console.log(`err543: varName ${varName} is already used!`);
 			process.exit(1);
 		} else {
 			varNames.push(varName);
+			const fsvg = fs.readFileSync(svgFilePath, 'utf8');
+			oStr += `export const ${varName} = '${fsvg}';\n\n`;
 		}
 	}
 	//console.log(varNames);
-	console.log(`Write output-file: ${ofile}`);
+	//console.log(oStr);
+	try {
+		createDir(path.dirname(ofile));
+		fs.writeFileSync(ofile, oStr);
+		console.log(`Write output-file: ${ofile}`);
+	} catch (err) {
+		console.log(`err389: Error by writing the file ${ofile}`);
+		console.error(err);
+	}
 }
 
 function svgfiles2js_cli(iArgs: string[]) {
