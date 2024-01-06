@@ -58,6 +58,8 @@ git clone https://github.com/charlyoleg2/svgfiles2js
 cd svgfiles2js
 npm install
 npm run ci
+npm run run
+npm run serve_html
 ./dist/svgfiles2js --help
 ./dist/svgfiles2js -s ./test/svg/*.svg -o ./test/js/svg-bundle.js
 ./dist/svgfiles2js -s ./test/svg/*.svg -o ./test/ts/svg-bundle.ts
