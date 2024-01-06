@@ -39,6 +39,9 @@
 		"run": "dist/svgfiles2js.js",
 		"clean": "shx rm -fr build dist node_modules output"
 	},
+	"dependencies": {
+		"yargs": "^17.7.2"
+	},
 	"devDependencies": {
 		"@types/node": "^20.10.6",
 		"@typescript-eslint/eslint-plugin": "^6.17.0",
@@ -53,13 +56,6 @@
 		"typescript": "^5.3.3",
 		"vitest": "^1.1.2"
 	},
-	"exports": {
-		".": {
-			"types": "./dist/svgfiles2js.d.ts",
-			"default": "./dist/svgfiles2js.js"
-		}
-	},
 	"bin": "./dist/svgfiles2js.js",
-	"types": "dist/svgfiles2js.d.ts",
 	"type": "module"
 }
