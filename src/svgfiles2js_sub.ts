@@ -33,7 +33,8 @@ function createVarName(iPath: string): string {
 function convert_svg(isvg: string[], ofile: string) {
 	const varNames: string[] = [];
 	let oStr = `// ${path.basename(ofile)}\n`;
-	oStr += `// created by svgfiles2js on ${dateString()}\n\n`;
+	//oStr += `// created by svgfiles2js on ${dateString()}\n\n`;
+	oStr += `// created by svgfiles2js\n\n`;
 	console.log('List of svg-files bundled:');
 	for (const [idx, svgFilePath] of isvg.entries()) {
 		console.log(`${idx + 1}: ${svgFilePath}`);
@@ -104,4 +105,4 @@ function svgfiles2js_cli(iArgs: string[]) {
 	convert_svg(svgfiles, argv.output[0]);
 }
 
-export { createVarName, svgfiles2js_cli };
+export { createVarName, dateString, svgfiles2js_cli };
